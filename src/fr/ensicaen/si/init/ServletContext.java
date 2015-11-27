@@ -1,4 +1,4 @@
-package fr.ensicaen.si.resources;
+package fr.ensicaen.si.init;
 
 import java.sql.SQLException;
 

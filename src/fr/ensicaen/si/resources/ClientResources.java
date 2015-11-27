@@ -19,12 +19,5 @@ public class ClientResources {
 	@Context
 	Request request;
 	
-	@GET
-	@Produces(MediaType.TEXT_XML)
-	public List<Client> getClients() {
-		/* Interroger la DB */
-		ArrayList<Client> list = new ArrayList<>();
-		list.add(new Client(1,"Bedouin","Connard"));
-		return list;
-	}
+	
 }
