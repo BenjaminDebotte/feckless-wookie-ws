@@ -26,13 +26,10 @@ public class ClientsResources {
 
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	@Path("list")
+	@Path("")
 	public List<Client> getClients() {
 		/* Interroger la DB */
-		//return ClientDao.getInstance().getClients();
-		ArrayList<Client> list = new ArrayList<>();
-		list.add(new Client(1,"Bedouin","<3"));
-		return list;
+		return ClientDao.getInstance().getClients();
 	}
 	
 	@GET
@@ -40,8 +37,13 @@ public class ClientsResources {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getCount() {
 		String countStr = "";
-		countStr = "10";
-		//countStr = new Integer(ClientDao.getInstance().countClient()).toString();
+		//countStr = "10";
+		try {
+			countStr = new Integer(ClientDao.getInstance().countClient()).toString();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return countStr;
 		
