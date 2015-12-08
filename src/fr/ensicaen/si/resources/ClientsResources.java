@@ -49,11 +49,17 @@ public class ClientsResources {
 		
 	}
 	
+	@GET
+	@Path("{client}")
+	@Produces(MediaType.TEXT_XML)
+	public List<Client> getClientByName(@PathParam("client") String name) {
+		return ClientDao.getInstance().getByName(name);
+	}
 	
 	@Path("id/{clientid}")
 	public ClientResources getClientById(@PathParam("clientid") int id) {
 		//return new ClientResources(uriInfi, request, id);
-		return new ClientResources();
+		return new ClientResources(id);
 	}
 	
 }

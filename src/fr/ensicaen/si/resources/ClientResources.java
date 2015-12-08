@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import dao.ClientDao;
 import model.Client;
 
 
@@ -19,5 +20,14 @@ public class ClientResources {
 	@Context
 	Request request;
 	
+	private int id;
+	
+	public ClientResources(int id) { this.id = id;}
+	
+	@GET
+	@Produces(MediaType.TEXT_XML)
+	public Client getClient() {
+		return ClientDao.getInstance().getById(id);
+	}
 	
 }
