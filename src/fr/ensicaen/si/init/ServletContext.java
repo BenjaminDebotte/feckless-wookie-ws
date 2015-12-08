@@ -13,8 +13,14 @@ public class ServletContext implements ServletContextListener {
 	//serveur-apprentissage.ensicaen.fr/
 	//172.28.106.1:8080    manager:manager
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("PENIS");
-		//DbManagement.getInstance().connexion("jdbc:mysql://localhost/si/");
+		try {
+			DbManagement.getInstance().setDelegate(new MysqlDbManagement());
+			DbManagement.getInstance().connexion("jdbc:mysql://127.0.0.1/si?" +
+												"user=si&password=Password1234");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
