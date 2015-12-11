@@ -26,7 +26,7 @@ public class ClientsResources {
 
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	@Path("")
+	//@Path("")
 	public List<Client> getClients() {
 		/* Interroger la DB */
 		return ClientDao.getInstance().getClients();
@@ -56,10 +56,16 @@ public class ClientsResources {
 		return ClientDao.getInstance().getByName(name);
 	}
 	
+	@GET
+	 @Path("{nom}/{prenom}") 
+	@Produces(MediaType.TEXT_XML)
+	public List<Client> getClientByNameAndFirstname(@PathParam("nom") String name, @PathParam("prenom") String firstname) {
+		return ClientDao.getInstance().getByFullname(name, firstname);
+	}
+	
 	@Path("id/{clientid}")
 	public ClientResources getClientById(@PathParam("clientid") int id) {
-		//return new ClientResources(uriInfi, request, id);
-		return new ClientResources(id);
+		return new ClientResources(uriInfo, request, id);
 	}
 	
 }

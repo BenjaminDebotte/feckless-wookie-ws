@@ -22,7 +22,11 @@ public class ClientResources {
 	
 	private int id;
 	
-	public ClientResources(int id) { this.id = id;}
+	public ClientResources(UriInfo uriInfo, Request request, int id) { 
+		this.uriInfo = uriInfo;
+		this.request = request;
+		this.id = id;
+	}
 	
 	@GET
 	@Produces(MediaType.TEXT_XML)
