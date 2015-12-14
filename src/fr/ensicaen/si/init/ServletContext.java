@@ -20,7 +20,7 @@ public class ServletContext implements ServletContextListener {
 		try {
 			DbManagement.getInstance().setDelegate(new MysqlDbManagement());
 			DbManagement.getInstance().connexion("jdbc:mysql://127.0.0.1/si?" +
-												"user=si&password=Password1234");
+												"user=2A&password=2A");
 			
 			ClientDao.getInstance().setDelegate(new DbClientDao());
 			OperationDao.getInstance().setDelegate(new DbOperationDao());
